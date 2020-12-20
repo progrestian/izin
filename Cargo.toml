@@ -1,0 +1,18 @@
+[package]
+name = "izin"
+version = "0.1.0"
+authors = ["Daniel Progrestian <progrestian@tuta.io>"]
+edition = "2018"
+
+[dependencies]
+async-std = { version = "1.8.0", features = ["attributes"] }
+bincode = "1.3.1"
+clap = "2.33.3"
+jsonwebtoken = "7.2.0"
+ring = "0.16.19"
+rpassword = "5.0.0"
+rprompt = "1.0.5"
+rust-argon2 = "0.8.3"
+serde = { version = "1.0.118", features = ["derive"] }
+sled = "0.34.4"
+tide = "0.15.0"
