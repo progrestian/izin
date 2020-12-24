@@ -1,8 +1,5 @@
 use izin::{Config, commands};
-use tide::{
-    http::headers::HeaderValue, security::CorsMiddleware, security::Origin, Body, Request,
-    Response, StatusCode,
-};
+use tide::{http::headers::HeaderValue, security::CorsMiddleware, Body, Request, Response, StatusCode};
 
 #[derive(Clone)]
 struct State {
@@ -64,7 +61,7 @@ async fn main() -> tide::Result<()> {
         Ok(Response::new(StatusCode::Unauthorized))
     });
 
-    app.listen(format!("127.0.0.1:{}", config.port)).await?;
+    app.listen(format!("0.0.0.0:{}", config.port)).await?;
 
     Ok(())
 }

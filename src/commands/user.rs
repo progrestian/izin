@@ -15,10 +15,10 @@ pub async fn create(users: sled::Tree, login: Login) -> Result<bool, Box<dyn Err
         ad: &[],
         hash_length: SECURITY_LENGTH,
         lanes: 1,
-        mem_cost: 65536,
+        mem_cost: 65535,
         secret: &[],
         thread_mode: argon2::ThreadMode::Sequential,
-        time_cost: 16,
+        time_cost: 8,
         variant: argon2::Variant::Argon2id,
         version: argon2::Version::Version13
     };
