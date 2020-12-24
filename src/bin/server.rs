@@ -26,7 +26,7 @@ async fn main() -> tide::Result<()> {
     app.with(
         CorsMiddleware::new()
             .allow_methods("GET, POST, OPTIONS".parse::<HeaderValue>().unwrap())
-            .allow_origin(Origin::from(config.origins))
+            .allow_origin(config.origins)
             .allow_credentials(false)
     );
 
