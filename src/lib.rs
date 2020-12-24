@@ -1,13 +1,14 @@
 use serde::{Deserialize, Serialize};
 use std::env;
+use tide::security::Origin;
 
 pub mod commands;
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug)]
 pub struct Config {
     pub database: String,
     pub logging: bool,
-    pub origins: Vec<String>,
+    pub origins: Origin,
     pub port: u16,
     pub secret: String,
 }
@@ -17,7 +18,7 @@ impl Default for Config {
         let mut config = Config {
             database: String::from("/var/lib/izin/database"),
             logging: false,
-            origins: vec![],
+            origins: Origin::Any,
             port: 80,
             secret: String::from(""),
         };
@@ -33,9 +34,7 @@ impl Default for Config {
         }
 
         if let Ok(origins) = env::var("IZIN_ORIGINS") {
-            for origin in origins.split(',') {
-                config.origins.push(origin.to_string());
-            }
+            config.origins = Origin::from(origins.split(',').collect::<Vec<&str>>());
         }
 
         if let Ok(port) = env::var("IZIN_PORT") {
