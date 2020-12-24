@@ -1,8 +1,5 @@
 use izin::{Config, commands};
-use tide::{
-    http::headers::HeaderValue, security::CorsMiddleware, security::Origin, Body, Request,
-    Response, StatusCode,
-};
+use tide::{http::headers::HeaderValue, security::CorsMiddleware, Body, Request, Response, StatusCode};
 
 #[derive(Clone)]
 struct State {
