@@ -61,7 +61,7 @@ async fn main() -> tide::Result<()> {
         Ok(Response::new(StatusCode::Unauthorized))
     });
 
-    app.listen(format!("127.0.0.1:{}", config.port)).await?;
+    app.listen(format!("0.0.0.0:{}", config.port)).await?;
 
     Ok(())
 }
